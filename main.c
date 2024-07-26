@@ -17,6 +17,7 @@ int	ps_convert(char **strs, int **stack_a, int *len)
 		printf("stack : %d\n", (*stack_a)[n]);
 		n++;
 	}
+
 	return (1);
 }
 
