@@ -43,7 +43,8 @@ int main(int ac, char **av)
 	int	i;
 	int	len;
 
-	initialize(&strs, &args, &stack_a, &i, ac);
+	if (!initialize(&strs, &args, &stack_a, &i, ac))
+		return (0);
 	while(av[i] != NULL)
 		args = join_args(args, av[i++]);
 	strs = ft_split(args, ' ');
@@ -54,5 +55,5 @@ int main(int ac, char **av)
 		return (write(2, "Error\n", 6));
 	if (!(check_unique(stack_a, len)))
 		return (write(2, "Error\n", 6));
-
+	push_swap(stack_a, len);
 }

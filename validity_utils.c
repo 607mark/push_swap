@@ -46,6 +46,7 @@ int     check_input(char ***strs)
                 free_strs(strs);
                 return (0);
         }
+	return (1);
 }
 
 int	check_unique(int *stack_a, int len)

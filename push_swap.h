@@ -15,6 +15,7 @@ char    **ft_split(char const *s, char c);
 
 //pushswap funcs
 char    *join_args(char *s1, char *s2);
+void push_swap(int *stack_a, int len_a);
 
 //utils
 int ps_arrlen(char **strs);
