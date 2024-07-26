@@ -76,26 +76,24 @@ int check_digits(char **strs)
 
 int	ps_atoi(const char *str, int *n)
 {
-	int				sign;
-	long long int	res;
+	int				s;
+	long long int	r;
 
-	sign = 1;
-	res = 0;
+	s = 1;
+	r = 0;
 	if (*str == '\0')
 		return (0);
 	if (*str == '-' || *str == '+')
 	{
 		if (*(str++) == '-')
-			sign = -1;
+			s = -1;
 	}
 	while (*str != '\0' && *str >= '0' && *str <= '9')
 	{
-		res = res * 10 + (*(str++) - '0');
-		if (res > INT_MAX || res < INT_MIN)
+		r = r * 10 + (*(str++) - '0');
+		if ((s == -1 && r * s < INT_MIN) || s == 1 && r > INT_MAX)
 			return (0);
 	}
-	*n = (int)res * sign;
+	*n = (int)(r * s);
 	return (1);
 }
-
-

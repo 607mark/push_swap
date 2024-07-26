@@ -1,11 +1,23 @@
 #include "push_swap.h"
 
-int	ps_convert(char **strs, int **stack_a)
+int	ps_convert(char **strs, int **stack_a, int *len)
 {
-	stack_a = (int **)malloc(ps_arrlen(strs) * sizeof(int);
-	if (!stack_a)
+
+	*len = ps_arrlen(strs);
+	*stack_a = (int *)malloc(*len * sizeof(int));
+	if (!*stack_a)
 		return (0);
-	printf("%d\n", ps_arrlen(strs));
+	printf("num count :%d\n", *len);
+	int n = 0;
+	while(n < *len)
+	{
+		printf("%d -- %p\n", n, &(*stack_a)[n]);
+		if (ps_atoi(strs[n], ((*stack_a) + n))  == 0)
+			return (0);
+		printf("stack : %d\n", (*stack_a)[n]);
+		n++;
+	}
+	return (1);
 }
 
 
@@ -17,12 +29,11 @@ int	check_input(char **strs)
 
 int main(int ac, char **av)
 {
-	char **strs;
-	char *args;
-	int	**stack_a;
-
-	int i;
-
+	char	**strs;
+	char	*args;
+	int	*stack_a;
+	int	i;
+	int	len;
 	i = 1;
 	args = NULL;
 	strs = NULL;
@@ -37,7 +48,7 @@ int main(int ac, char **av)
 			return (write(2, "Error\n", 6));
 		if (!check_input(strs))
 			return (write(2, "Error\n", 6));
-		if (!ps_convert(strs, stack_a))
+		if (!ps_convert(strs, &stack_a, &len))
 			return (write(2, "Error\n", 6));
 				
 		

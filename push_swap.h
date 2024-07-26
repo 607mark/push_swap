@@ -16,7 +16,11 @@ char    **ft_split(char const *s, char c);
 //pushswap funcs
 char    *join_args(char *s1, char *s2);
 int	check_digits(char **strs);
-int ps_arrlen(char **strs)
+
+//utils
+int ps_arrlen(char **strs);
+int     ps_atoi(const char *str, int *n);
+
 
 #endif
 
