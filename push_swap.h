@@ -4,9 +4,20 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <limits.h>
 
+//libft funcs
+
+size_t  ft_strlen(const char *s);
 char    **ft_split(char const *s, char c);
+
+
+//pushswap funcs
 char    *join_args(char *s1, char *s2);
+int	check_digits(char **strs);
+int ps_arrlen(char **strs)
+
 #endif
 
 
