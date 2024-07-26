@@ -46,34 +46,6 @@ char	*join_args(char *s1, char *s2)
 }
 //***********************************************
 
-static int     ps_isdigit(int c)
-{
-        if ((c >= '0' && c <= '9') || c == '-'  || c == '+')
-                return (1);
-        else
-                return (0);
-}
-
-int check_digits(char **strs)
-{
-	int i;
-	int j;
-
-	i = 0;
-	while(strs[i] != NULL)
-	{
-		j = 0;
-		while(strs[i][j] != '\0')
-		{
-			if (!(ps_isdigit(strs[i][j])))
-					return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
 int	ps_atoi(const char *str, int *n)
 {
 	int				s;

@@ -1,31 +1,38 @@
 #include "push_swap.h"
 
-int	ps_convert(char **strs, int **stack_a, int *len)
+int	ps_convert(char ***strs, int **stack_a, int *len)
 {
+	int	n;
 
-	*len = ps_arrlen(strs);
+	*len = ps_arrlen(*strs);
 	*stack_a = (int *)malloc(*len * sizeof(int));
 	if (!*stack_a)
-		return (0);
-	printf("num count :%d\n", *len);
-	int n = 0;
-	while(n < *len)
 	{
-		printf("%d -- %p\n", n, &(*stack_a)[n]);
-		if (ps_atoi(strs[n], ((*stack_a) + n))  == 0)
-			return (0);
-		printf("stack : %d\n", (*stack_a)[n]);
-		n++;
+		free_strs(strs);
+		return (0);
 	}
-
+	n = -1;
+	while(++n < *len)
+	{
+		if (ps_atoi((*strs)[n], ((*stack_a) + n))  == 0)
+		{	
+			free_strs(strs);
+			free(*stack_a);
+			return (0);
+		}
+	}
+	free_strs(strs);
 	return (1);
 }
 
-
-int	check_input(char **strs)
+int initialize(char ***strs, char **args, int **stack_a, int *i, int ac)
 {
-	if (!check_digits(strs))
+	if (ac < 2)
 		return (0);
+	*i = 1;
+	*args = NULL;
+	*strs = NULL;
+	*stack_a = NULL;
 }
 
 int main(int ac, char **av)
@@ -35,40 +42,17 @@ int main(int ac, char **av)
 	int	*stack_a;
 	int	i;
 	int	len;
-	i = 1;
-	args = NULL;
-	strs = NULL;
-	stack_a = NULL;
-	if(ac > 1)
-	{
-		while(av[i] != NULL)
-			args = join_args(args, av[i++]);
-		strs = ft_split(args, ' ');
-		free(args);
-		if(strs == NULL)
-			return (write(2, "Error\n", 6));
-		if (!check_input(strs))
-			return (write(2, "Error\n", 6));
-		if (!ps_convert(strs, &stack_a, &len))
-			return (write(2, "Error\n", 6));
-				
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		int n = 0;
-		while(strs[n] != NULL)
-		{
-			printf("%s\n", strs[n++]);
-		}
-	}
+
+	initialize(&strs, &args, &stack_a, &i, ac);
+	while(av[i] != NULL)
+		args = join_args(args, av[i++]);
+	strs = ft_split(args, ' ');
+	free(args);
+	if(strs == NULL || !check_input(&strs))
+		return (write(2, "Error\n", 6));
+	if (!ps_convert(&strs, &stack_a, &len))
+		return (write(2, "Error\n", 6));
+	if (!(check_unique(stack_a, len)))
+		return (write(2, "Error\n", 6));
+
 }
