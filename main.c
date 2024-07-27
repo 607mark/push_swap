@@ -5,7 +5,7 @@ int	ps_convert(char ***strs, int **stack_a, int *len)
 	int	n;
 
 	*len = ps_arrlen(*strs);
-	*stack_a = (int *)malloc(*len * sizeof(int));
+	*stack_a = (int *)malloc(*len + 10 * sizeof(int));
 	if (!*stack_a)
 	{
 		free_strs(strs);
@@ -33,6 +33,7 @@ int initialize(char ***strs, char **args, int **stack_a, int *i, int ac)
 	*args = NULL;
 	*strs = NULL;
 	*stack_a = NULL;
+	return (1);
 }
 
 int main(int ac, char **av)

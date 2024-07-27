@@ -54,8 +54,6 @@ int	check_unique(int *stack_a, int len)
 	int	i;
 	int	j;
 
-	if (len < 2)
-		return (0);
 	i = 0;
 	while (i < len)
 	{
