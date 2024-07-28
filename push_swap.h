@@ -38,6 +38,10 @@ int	op_rrb(int *stack_b, int *len_b);
 int	op_rr(int *stack_a, int *stack_b, int *len_a, int *len_b);
 int	op_rrr(int *stack_a, int *stack_b, int *len_a, int *len_b);
 
+//sorting
+char *sort_3(int *s, int len);
+
+
 //temp
 
 void print_stacks(int *stack_a, int *stack_b, int len_a, int len_b);
