@@ -40,7 +40,9 @@ int	op_rrr(int *stack_a, int *stack_b, int *len_a, int *len_b);
 
 //sorting
 char *sort_3(int *s, int len);
-
+void main_algo( int *s_a, int *s_b, int *len_a, int *len_b);
+//sorting utils
+int is_sorted(int *stack, int len);
 
 //temp
 

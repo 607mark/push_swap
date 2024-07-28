@@ -56,5 +56,10 @@ int main(int ac, char **av)
 		return (write(2, "Error\n", 6));
 	if (!(check_unique(stack_a, len)))
 		return (write(2, "Error\n", 6));
+	if (len < 2)
+	{	
+		free(stack_a);
+		return (0);
+	}
 	push_swap(stack_a, len);
 }
