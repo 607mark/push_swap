@@ -26,21 +26,25 @@ int     check_unique(int *stack_a, int len);
 void	free_strs(char ***arr);
 
 //operations
-int	op_sa(int *stack_a,int *len_a);
-int	op_sb(int *stack_b, int *len_b);
-int	op_pa(int *stack_a, int *stack_b, int *len_a, int *len_b);
-int	op_pb(int *stack_a, int *stack_b, int *len_a, int *len_b);
-int	op_ss(int *stack_a, int *stack_b, int *len_a, int *len_b);
-int	op_ra(int *stack_a, int *len_a);
-int	op_rb(int *stack_b, int *len_b);
-int	op_rra(int *stack_a, int *len_a);
-int	op_rrb(int *stack_b, int *len_b);
-int	op_rr(int *stack_a, int *stack_b, int *len_a, int *len_b);
-int	op_rrr(int *stack_a, int *stack_b, int *len_a, int *len_b);
+void	op_sa(int *stack_a,int *len_a);
+void	op_sb(int *stack_b, int *len_b);
+void	op_pa(int *stack_a, int *stack_b, int *len_a, int *len_b);
+void	op_pb(int *stack_a, int *stack_b, int *len_a, int *len_b);
+void	op_ss(int *stack_a, int *stack_b, int *len_a, int *len_b);
+void	op_ra(int *stack_a, int *len_a);
+void	op_rb(int *stack_b, int *len_b);
+void	op_rra(int *stack_a, int *len_a);
+void	op_rrb(int *stack_b, int *len_b);
+void	op_rr(int *stack_a, int *stack_b, int *len_a, int *len_b);
+void	op_rrr(int *stack_a, int *stack_b, int *len_a, int *len_b);
 
 //sorting
-char *sort_3(int *s, int len);
+void *sort_3(int *s, int *len);
 void main_algo( int *s_a, int *s_b, int *len_a, int *len_b);
+
+void push_phase(int *s_a, int *s_b, int *len_a, int *len_b);
+void push_back_phase(int *s_a, int *s_b, int *len_a, int *len_b);
+
 //sorting utils
 int is_sorted(int *stack, int len);
 

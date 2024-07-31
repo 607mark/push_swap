@@ -1,20 +1,26 @@
 #include "push_swap.h"
 
-char *sort_3(int *s, int len)
+void *sort_3(int *s, int *len)
 {
-	if (len == 3)
+	if (*len == 3)
 	{
 		if (s[0] > s[1] && s[1] > s[2])
-			return ("ra\nsa\n");	
-		if (s[0] > s[2] && s[2] > s[1])
-			return ("ra\n");
-		if (s[2] > s[0] && s[0] > s[1])
-	        	return ("sa\n");
-		if (s[1] > s[0] && s[0] > s[2])
-			return ("rra\n");
-		if (s[1] > s[2] && s[2] > s[0])
-			return ("sa\nra\n");
+		{	
+			op_ra(s, len);
+			op_sa(s, len);
+		}
+		else if (s[0] > s[2] && s[2] > s[1])
+			op_ra(s, len);
+		else if (s[2] > s[0] && s[0] > s[1])
+			op_sa(s, len);
+		else if (s[1] > s[0] && s[0] > s[2])
+			op_rra(s, len);
+		else if (s[1] > s[2] && s[2] > s[0])
+		{	
+			op_sa(s, len);
+			op_ra(s, len);
+		}
 	}
-	else if (len == 2 && s[0] > s[1])
-		return ("sa\n");
+	else if (*len == 2 && s[0] > s[1])
+			op_sa(s, len);
 }

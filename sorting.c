@@ -44,12 +44,5 @@ void push_swap(int *stack_a, int len_a)
 
 	if(!init_b(&stack_b, &len_b, &stack_a, len_a))
 		return ;
-	if (len_a > 3)
-		main_algo(stack_a, stack_b, &len_a, &len_b);
-	else if (len_a <= 3)
-	{
-		printf("%s", sort_3(stack_a, len_a));
-		free(stack_a);
-		free(stack_b);
-	}
+	main_algo(stack_a, stack_b, &len_a, &len_b);
 }
