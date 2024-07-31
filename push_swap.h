@@ -13,6 +13,13 @@
 //char    **ft_split(char const *s, char c);
 
 
+typedef struct {
+    int *a;
+    int *b;
+    int *len_a;
+    int *len_b;
+} t_stacks;
+
 //pushswap funcs
 char    *join_args(char *s1, char *s2);
 void push_swap(int *stack_a, int len_a);
