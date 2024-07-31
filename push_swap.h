@@ -6,11 +6,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
-
+# include "libft/libft.h"
 //libft funcs
 
-size_t  ft_strlen(const char *s);
-char    **ft_split(char const *s, char c);
+//size_t  ft_strlen(const char *s);
+//char    **ft_split(char const *s, char c);
 
 
 //pushswap funcs
