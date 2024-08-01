@@ -14,7 +14,10 @@ void print_stacks(int *stack_a, int *stack_b, int len_a, int len_b)
 	printf("======stack b======\n");
 	printf("len_b=%d\n", len_b);
 	while(i < len_b)
-		printf("#%d = %d\n",i, stack_b[i++]);
+	{
+		printf("#%d = %d\n",i, stack_b[i]);
+		i++;
+	}
 }
 
 int init_b(int **stack_b, int *len_b, int **stack_a, int len_a)

@@ -14,11 +14,23 @@
 
 
 typedef struct {
-    int *a;
-    int *b;
-    int *len_a;
-    int *len_b;
+	int *a;
+	int *b;
+	int *len_a;
+	int *len_b;
 } t_stacks;
+
+typedef struct {
+	int a_top;
+	int a_bot;
+	int b_top;
+	int b_bot;
+} t_pair_cost;
+
+typedef struct {
+	int i;
+	int cost;
+} t_best_node;
 
 //pushswap funcs
 char    *join_args(char *s1, char *s2);
