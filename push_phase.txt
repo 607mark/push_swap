@@ -142,18 +142,19 @@ void apply_move(t_stacks *s, t_pair_cost *c, t_best_node *b, int n)
 	
 	target = target_b(s->a, s->b, s->len_a, s->len_b, b->i);
 //	printf("target%d\n", target);
+//	printf("str %d\n", n);
 
 	if (n == 1)
 	{
 		while(c->a_top)
 		{
 			op_ra(s->a, s->len_a);
-			--c->a_top;
+			c->a_top--;
 		}
 		while(c->b_bot)
 		{
 			op_rrb(s->b, s->len_b);
-			--c->b_bot;
+			c->b_bot--;
 		}
 	}
 	else if (n == 2)
@@ -161,12 +162,12 @@ void apply_move(t_stacks *s, t_pair_cost *c, t_best_node *b, int n)
 		while(c->b_top)
 		{
 			op_rb(s->b, s->len_b);
-			--c->b_top;
+			c->b_top--;
 		}	
 		while(c->a_bot)
 		{
 			op_rra(s->a, s->len_a);
-			--c->a_bot;
+			c->a_bot--;
 		}
 	}
 	else if (n == 3)
@@ -174,13 +175,13 @@ void apply_move(t_stacks *s, t_pair_cost *c, t_best_node *b, int n)
 		while(c->b_top && c->a_top)
 		{
 			op_rr(s->a, s->b, s->len_a, s->len_b);
-			--c->b_top;
-			--c->a_top;
+			c->b_top--;
+			c->a_top--;
 		}
 		while(c->a_top)
 		{
 			op_ra(s->a, s->len_a);
-			--c->a_top;
+			c->a_top--;
 		}
 	}
 	else if (n == 4)
@@ -188,28 +189,27 @@ void apply_move(t_stacks *s, t_pair_cost *c, t_best_node *b, int n)
 		while(c->b_top && c->a_top)
 		{
 			op_rr(s->a, s->b, s->len_a, s->len_b);
-			--c->b_top;
-			--c->a_top;
+			c->b_top--;
+			c->a_top--;
 		}
 		while(c->b_top)
 		{
 			op_rb(s->b, s->len_b);
-			--c->b_top;
+			c->b_top--;
 		}
 	}
 	else if (n == 5)
 	{
-		printf("---------------for node num %d strategy %d\n", b->i,  n);
 		while(c->b_bot && c->a_bot)
 		{
 			op_rrr(s->a, s->b, s->len_a, s->len_b);
-			--c->b_bot;
-			--c->a_bot;
+			c->b_bot--;
+			c->a_bot--;
 		}
 		while(c->a_bot)
 		{
 			op_rra(s->b, s->len_b);
-			--c->a_bot;
+			c->a_bot--;
 		}
 	}
 	else if (n == 6)
@@ -217,13 +217,13 @@ void apply_move(t_stacks *s, t_pair_cost *c, t_best_node *b, int n)
 		while(c->b_bot && c->a_bot)
 		{
 			op_rrr(s->a, s->b, s->len_a, s->len_b);
-			--c->b_bot;
-			--c->a_bot;
+			c->b_bot--;
+			c->a_bot--;
 		}
 		while(c->b_bot)
 		{	
 			op_rrb(s->b, s->len_b);
-			--c->b_bot;
+			c->b_bot--;
 		}
 		
 	}
@@ -271,7 +271,7 @@ void	push_phase(int *s_a, int *s_b, int *len_a, int *len_b)
 		}
 		tmp = strat_for_node(&cost, stacks, best.i);
 		apply_move(&stacks, &cost, &best, tmp);
-		print_stacks(stacks.a, stacks.b, *stacks.len_a, *stacks.len_b);
+	//	print_stacks(s_a, s_b, *len_a, *len_b);
 
 	}
 	//print_stacks(s_a, s_b, *len_a, *len_b);

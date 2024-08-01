@@ -48,4 +48,5 @@ void push_swap(int *stack_a, int len_a)
 	if(!init_b(&stack_b, &len_b, &stack_a, len_a))
 		return ;
 	main_algo(stack_a, stack_b, &len_a, &len_b);
+	print_stacks(stack_a, stack_b, len_a, len_b);
 }
