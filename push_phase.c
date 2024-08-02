@@ -199,7 +199,6 @@ void apply_move(t_stacks *s, t_pair_cost *c, t_best_node *b, int n)
 	}
 	else if (n == 5)
 	{
-		printf("---------------for node num %d strategy %d\n", b->i,  n);
 		while(c->b_bot && c->a_bot)
 		{
 			op_rrr(s->a, s->b, s->len_a, s->len_b);
@@ -208,7 +207,7 @@ void apply_move(t_stacks *s, t_pair_cost *c, t_best_node *b, int n)
 		}
 		while(c->a_bot)
 		{
-			op_rra(s->b, s->len_b);
+			op_rra(s->a, s->len_a);
 			--c->a_bot;
 		}
 	}
@@ -253,8 +252,7 @@ void	push_phase(int *s_a, int *s_b, int *len_a, int *len_b)
 
 	while (*len_a > 3 && i--)
 		op_pb(s_a, s_b, len_a, len_b);
-	//print_stacks(s_a, s_b, *len_a, *len_b);
-	while(*len_a > 3)
+	while(*len_a > 0)
 	{
 		i = 0;
 		init_best_node (&best);
@@ -271,16 +269,22 @@ void	push_phase(int *s_a, int *s_b, int *len_a, int *len_b)
 		}
 		tmp = strat_for_node(&cost, stacks, best.i);
 		apply_move(&stacks, &cost, &best, tmp);
-		print_stacks(stacks.a, stacks.b, *stacks.len_a, *stacks.len_b);
 
 	}
-	//print_stacks(s_a, s_b, *len_a, *len_b);
-
-
-
-
-
-
+	tmp = find_max(stacks.b, *stacks.len_b);
+	if (tmp <= *stacks.len_b / 2)
+	{
+		while(tmp--)
+			op_rb(stacks.b, stacks.len_b);
+	}
+	else
+	{
+		tmp = *stacks.len_b - tmp;
+		while(tmp--)
+			op_rrb(stacks.b, stacks.len_b);
+	}
+	while (*stacks.len_b > 0)
+		op_pa(stacks.a, stacks.b, stacks.len_a, stacks.len_b);
 
 
 
