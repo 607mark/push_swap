@@ -13,21 +13,24 @@
 //char    **ft_split(char const *s, char c);
 
 
-typedef struct {
+typedef struct s_stacks
+{
 	int *a;
 	int *b;
 	int *len_a;
 	int *len_b;
 } t_stacks;
 
-typedef struct {
+typedef struct s_pair_cost
+{
 	int a_top;
 	int a_bot;
 	int b_top;
 	int b_bot;
 } t_pair_cost;
 
-typedef struct {
+typedef struct s_best_node
+{
 	int i;
 	int cost;
 } t_best_node;
@@ -58,16 +61,21 @@ void	op_rr(int *stack_a, int *stack_b, int *len_a, int *len_b);
 void	op_rrr(int *stack_a, int *stack_b, int *len_a, int *len_b);
 
 //sorting
-void *sort_3(int *s, int *len);
 void main_algo( int *s_a, int *s_b, int *len_a, int *len_b);
-
-void push_phase(int *s_a, int *s_b, int *len_a, int *len_b);
-void push_back_phase(int *s_a, int *s_b, int *len_a, int *len_b);
+void *sort_3(int *s, int *len);
+void	complex_sort(t_stacks *stacks);
 
 //sorting utils
 int is_sorted(int *stack, int len);
-
-//temp
+int	target_b(t_stacks s, int n);
+int find_max(int *s, int len);
+void	init_best_node(t_best_node *best);
+//strategies
+void strat_1(t_stacks *s, t_pair_cost *c, t_best_node *b);
+void strat_2(t_stacks *s, t_pair_cost *c, t_best_node *b);
+void strat_3(t_stacks *s, t_pair_cost *c, t_best_node *b);
+void strat_4(t_stacks *s, t_pair_cost *c, t_best_node *b);
+void strat_5(t_stacks *s, t_pair_cost *c, t_best_node *b);
 
 void print_stacks(int *stack_a, int *stack_b, int len_a, int len_b);
 #endif

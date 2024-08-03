@@ -1,5 +1,19 @@
 #include "push_swap.h"
 
+void free_strs(char ***arr)
+{
+	int i;
+
+	i = 0;
+	while ((*arr)[i])
+	{
+		free((*arr)[i]);
+		i++;
+	}
+	free((*arr)[i]);
+	free(*arr);
+}
+
 int ps_arrlen(char **strs)
 {
 	int	i;
@@ -44,7 +58,6 @@ char	*join_args(char *s1, char *s2)
 		free(s1);
 	return (p);
 }
-//***********************************************
 
 int	ps_atoi(const char *str, int *n)
 {
