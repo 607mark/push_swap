@@ -70,7 +70,6 @@ or (whatever)
 ```sh
 ./push_swap "3 2" 5 '1 4'
 ```
-### Testing
+### test.sh
 
-You can test the sorting algorithm with different number sequences. The program will output the sequence of operations it used to sort the stack.
-
+The `test.sh` script checks if your push_swap program processes the input correctly. To ensure it runs properly, you need to disable the instruction output.
