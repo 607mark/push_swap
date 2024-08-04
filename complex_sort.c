@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex_sort.c                                       :+:      :+:    :+:   */
+/*   complex_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mshabano <mshabano@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 03:46:12 by mshabano          #+#    #+#             */
-/*   Updated: 2024/08/03 03:46:20 by mshabano         ###   ########.fr       */
+/*   Created: 2024/08/04 15:25:02 by mshabano          #+#    #+#             */
+/*   Updated: 2024/08/04 15:37:49 by mshabano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int strategy(t_stacks stacks, t_pair_cost cost, int i, char hard)
+static int	strategy(t_stacks stacks, t_pair_cost cost, int i, char hard)
 {
 	if (hard == 'b')
 	{
@@ -38,7 +38,7 @@ int strategy(t_stacks stacks, t_pair_cost cost, int i, char hard)
 	}
 }
 
-int count_cost(int strat, t_pair_cost cost)
+int	count_cost(int strat, t_pair_cost cost)
 {
 	if (strat == 1)
 		return (cost.a_top + cost.b_bot);
@@ -47,7 +47,7 @@ int count_cost(int strat, t_pair_cost cost)
 	else if (strat == 3)
 		return (cost.a_top);
 	else if (strat == 4)
-		return (cost.b_top);	
+		return (cost.b_top);
 	else if (strat == 5)
 		return (cost.a_bot);
 	else if (strat == 6)
@@ -56,10 +56,10 @@ int count_cost(int strat, t_pair_cost cost)
 
 int	strat_for_node(t_pair_cost *cost, t_stacks stacks, int i)
 {
-	int target;
 	char	hard;
-	int	easy_a;
-	int	easy_b;
+	int		target;
+	int		easy_a;
+	int		easy_b;
 
 	target = target_b(stacks, i);
 	cost->a_top = i;
@@ -81,46 +81,41 @@ int	strat_for_node(t_pair_cost *cost, t_stacks stacks, int i)
 	return (strategy(stacks, *cost, i, hard));
 }
 
-
-
-
-void find_best_node (t_stacks *stacks, t_best_node *best, t_pair_cost *cost, int *i)
+void	find_best(t_stacks *stacks, t_best *best, t_pair_cost *cost, int *i)
 {
-	int tmp;
+	int	tmp;
 
-	while(*i < *stacks->len_a)
+	while (*i < *stacks->len_a)
+	{
+		tmp = strat_for_node(cost, *stacks, *i);
+		if (count_cost(tmp, *cost) < best->cost)
 		{
-			tmp = strat_for_node(cost, *stacks, *i);
-			if (count_cost(tmp, *cost) < best->cost)
-			{
-				best->cost = count_cost(tmp, *cost);
-				best->i = *i;
-			}
-			(*i)++;
+			best->cost = count_cost(tmp, *cost);
+			best->i = *i;
 		}
+		(*i)++;
+	}
 }
 
 void	complex_sort(t_stacks *stacks)
 {
-	int	i;
-	int	tmp;
-	
-	t_pair_cost cost;
-	t_best_node best;
+	t_pair_cost	cost;
+	t_best		best;
+	int			i;
+	int			tmp;
 
-	init_best_node (&best);
+	init_best (&best);
 	i = 2;
 	while (*stacks->len_a > 3 && i--)
 		op_pb(stacks->a, stacks->b, stacks->len_a, stacks->len_b);
-	while(*stacks->len_a > 0)
+	while (*stacks->len_a > 0)
 	{
 		i = 0;
-		init_best_node (&best);
-		find_best_node (stacks, &best, &cost, &i);
+		init_best (&best);
+		find_best(stacks, &best, &cost, &i);
 		tmp = strat_for_node(&cost, *stacks, best.i);
 		apply_move(stacks, &cost, &best, tmp);
 	}
 	max_on_top(stacks);
 	push_all_back(stacks);
 }
-

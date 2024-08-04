@@ -6,17 +6,17 @@
 /*   By: mshabano <mshabano@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 04:07:58 by mshabano          #+#    #+#             */
-/*   Updated: 2024/08/03 04:08:03 by mshabano         ###   ########.fr       */
+/*   Updated: 2024/08/04 15:24:04 by mshabano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int init_b(int **stack_b, int *len_b, int **stack_a, int len_a)
+static int	init_b(int **stack_b, int *len_b, int **stack_a, int len_a)
 {
 	if (!is_sorted(*stack_a, len_a))
 	{
-		*stack_b =(int *)malloc(len_a * sizeof(int));
+		*stack_b = (int *)malloc (len_a * sizeof(int));
 		if (!*stack_b)
 		{
 			free(*stack_a);
@@ -30,31 +30,29 @@ int init_b(int **stack_b, int *len_b, int **stack_a, int len_a)
 		return (0);
 	}
 }
-void main_algo( int *s_a, int *s_b, int *len_a, int *len_b)
+
+static void	main_algo(int *s_a, int *s_b, int *len_a, int *len_b)
 {
-	t_stacks stacks;
+	t_stacks	stacks;
 
 	stacks.a = s_a;
 	stacks.b = s_b;
 	stacks.len_a = len_a;
 	stacks.len_b = len_b;
-
 	if (*len_a > 3)
 		complex_sort(&stacks);
 	else if (*len_a <= 3)
 		sort_3(s_a, len_a);
-	//print_stacks(s_a, s_b, *len_a, *len_b);	
-
 	free(s_a);
 	free(s_b);
 }
 
-void push_swap(int *stack_a, int len_a)
+void	push_swap(int *stack_a, int len_a)
 {
 	int	*stack_b;
 	int	len_b;
 
-	if(!init_b(&stack_b, &len_b, &stack_a, len_a))
+	if (!init_b(&stack_b, &len_b, &stack_a, len_a))
 		return ;
 	main_algo(stack_a, stack_b, &len_a, &len_b);
 }

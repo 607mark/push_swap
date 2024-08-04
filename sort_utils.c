@@ -6,24 +6,24 @@
 /*   By: mshabano <mshabano@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 04:08:17 by mshabano          #+#    #+#             */
-/*   Updated: 2024/08/03 04:08:19 by mshabano         ###   ########.fr       */
+/*   Updated: 2024/08/04 15:50:34 by mshabano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_best_node(t_best_node *best)
+void	init_best(t_best *best)
 {
 	best->i = -1;
 	best->cost = INT_MAX;
 }
 
-int find_max(int *s, int len)
+int	find_max(int *s, int len)
 {
 	int	max;
 	int	i;
-	
-	i = 0;	
+
+	i = 0;
 	max = i;
 	while (i < len)
 	{
@@ -41,7 +41,7 @@ int	target_b(t_stacks s, int n)
 
 	i = 0;
 	target_index = -1;
-	while(i < *s.len_b)
+	while (i < *s.len_b)
 	{
 		if (s.a[n] > s.b[i])
 		{
@@ -57,23 +57,22 @@ int	target_b(t_stacks s, int n)
 	return (target_index);
 }
 
-int is_sorted(int *stack, int len)
+int	is_sorted(int *stack, int len)
 {
-	
-	while(--len)
+	while (--len)
 	{
 		if (stack[len - 1] > stack[len])
-			return(0);
+			return (0);
 	}
 	return (1);
 }
 
-void *sort_3(int *s, int *len)
+void	sort_3(int *s, int *len)
 {
 	if (*len == 3)
 	{
 		if (s[0] > s[1] && s[1] > s[2])
-		{	
+		{
 			op_ra(s, len);
 			op_sa(s, len);
 		}
@@ -84,11 +83,11 @@ void *sort_3(int *s, int *len)
 		else if (s[1] > s[0] && s[0] > s[2])
 			op_rra(s, len);
 		else if (s[1] > s[2] && s[2] > s[0])
-		{	
+		{
 			op_sa(s, len);
 			op_ra(s, len);
 		}
 	}
 	else if (*len == 2 && s[0] > s[1])
-			op_sa(s, len);
+		op_sa(s, len);
 }

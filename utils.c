@@ -6,15 +6,14 @@
 /*   By: mshabano <mshabano@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 04:08:30 by mshabano          #+#    #+#             */
-/*   Updated: 2024/08/03 04:08:31 by mshabano         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:01:24 by mshabano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
-void free_strs(char ***arr)
+void	free_strs(char ***arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while ((*arr)[i])
@@ -26,12 +25,12 @@ void free_strs(char ***arr)
 	free(*arr);
 }
 
-int ps_arrlen(char **strs)
+int	ps_arrlen(char **strs)
 {
 	int	i;
-	
+
 	i = 0;
-	while(strs[i] != NULL)
+	while (strs[i] != NULL)
 		i++;
 	return (i);
 }
@@ -50,6 +49,7 @@ char	*join_args(char *s1, char *s2)
 	char	*p;
 	size_t	len_s1;
 	size_t	len_s2;
+
 	if (!s1)
 		len_s1 = 0;
 	else

@@ -6,13 +6,12 @@
 /*   By: mshabano <mshabano@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 04:08:08 by mshabano          #+#    #+#             */
-/*   Updated: 2024/08/03 04:08:09 by mshabano         ###   ########.fr       */
+/*   Updated: 2024/08/04 15:45:25 by mshabano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
-int	ps_convert(char ***strs, int **stack_a, int *len)
+static int	ps_convert(char ***strs, int **stack_a, int *len)
 {
 	int	n;
 
@@ -24,10 +23,10 @@ int	ps_convert(char ***strs, int **stack_a, int *len)
 		return (0);
 	}
 	n = -1;
-	while(++n < *len)
+	while (++n < *len)
 	{
-		if (ps_atoi((*strs)[n], ((*stack_a) + n))  == 0)
-		{	
+		if (ps_atoi((*strs)[n], ((*stack_a) + n)) == 0)
+		{
 			free_strs(strs);
 			free(*stack_a);
 			return (0);
@@ -37,39 +36,39 @@ int	ps_convert(char ***strs, int **stack_a, int *len)
 	return (1);
 }
 
-int initialize(char ***strs, char **args, int **stack_a, int *i, int ac)
+static int	initialize(char ***strs, char **args, int **stack_a, int ac)
 {
 	if (ac < 2)
 		return (0);
-	*i = 1;
 	*args = NULL;
 	*strs = NULL;
 	*stack_a = NULL;
 	return (1);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	char	**strs;
 	char	*args;
-	int	*stack_a;
-	int	i;
-	int	len;
+	int		*stack_a;
+	int		i;
+	int		len;
 
-	if (!initialize(&strs, &args, &stack_a, &i, ac))
+	if (!initialize(&strs, &args, &stack_a, ac))
 		return (0);
-	while(av[i] != NULL)
+	i = 1;
+	while (av[i] != NULL)
 		args = join_args(args, av[i++]);
 	strs = ft_split(args, ' ');
 	free(args);
-	if(strs == NULL || !check_input(&strs))
+	if (strs == NULL || !check_input(&strs))
 		return (write(2, "Error\n", 6));
 	if (!ps_convert(&strs, &stack_a, &len))
 		return (write(2, "Error\n", 6));
 	if (!(check_unique(stack_a, len)))
 		return (write(2, "Error\n", 6));
 	if (len < 2)
-	{	
+	{
 		free(stack_a);
 		return (0);
 	}
