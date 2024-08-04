@@ -8,9 +8,9 @@ In this project, you'll find a program that sorts integers using two stacks (sta
 
 ## Results
 
-For a set of 100 integers: 584 instructions on average
-For a set of 500 integers: 5,177 instructions on average
-For a set of 1,000 integers: 13,693 instructions on average
+- For a set of 100 integers: 584 instructions on average
+- For a set of 500 integers: 5,177 instructions on average
+- For a set of 1,000 integers: 13,693 instructions on average
 
 ## The Operations
 
