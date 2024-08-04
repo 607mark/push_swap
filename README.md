@@ -1,6 +1,6 @@
 # push_swap Project
 
-This repository contains my implementation to a fun and challenging sorting algorithm problem. The goal is to sort a list of numbers using a limited set of operations on two stacks.
+This repository contains my implementation of a fun and challenging sorting algorithm problem. The goal is to sort a list of numbers using a limited set of operations on two stacks.
 
 ## What's This About?
 
