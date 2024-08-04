@@ -64,12 +64,15 @@ void	op_rrr(int *stack_a, int *stack_b, int *len_a, int *len_b);
 void main_algo( int *s_a, int *s_b, int *len_a, int *len_b);
 void *sort_3(int *s, int *len);
 void	complex_sort(t_stacks *stacks);
-
+void push_all_back(t_stacks *stacks);
+void max_on_top(t_stacks *stacks);
+void find_best_node (t_stacks *stacks, t_best_node *best, t_pair_cost *cost, int *i);
 //sorting utils
 int is_sorted(int *stack, int len);
 int	target_b(t_stacks s, int n);
 int find_max(int *s, int len);
 void	init_best_node(t_best_node *best);
+void apply_move(t_stacks *s, t_pair_cost *c, t_best_node *b, int n);
 //strategies
 void strat_1(t_stacks *s, t_pair_cost *c, t_best_node *b);
 void strat_2(t_stacks *s, t_pair_cost *c, t_best_node *b);

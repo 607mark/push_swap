@@ -81,33 +81,23 @@ int	strat_for_node(t_pair_cost *cost, t_stacks stacks, int i)
 	return (strategy(stacks, *cost, i, hard));
 }
 
-void apply_move(t_stacks *s, t_pair_cost *c, t_best_node *b, int n)
+
+
+
+void find_best_node (t_stacks *stacks, t_best_node *best, t_pair_cost *cost, int *i)
 {
-	if (n == 1)
-		strat_1(s, c,b);
-	else if (n == 2)
-		strat_2(s, c,b);
-	else if (n == 3)
-		strat_3(s, c,b);
-	else if (n == 4)
-		strat_4(s, c,b);
-	else if (n == 5)
-		strat_5(s, c,b);
-	else if (n == 6)
-	{
-		while(c->b_bot && c->a_bot)
+	int tmp;
+
+	while(*i < *stacks->len_a)
 		{
-			op_rrr(s->a, s->b, s->len_a, s->len_b);
-			--c->b_bot;
-			--c->a_bot;
+			tmp = strat_for_node(cost, *stacks, *i);
+			if (count_cost(tmp, *cost) < best->cost)
+			{
+				best->cost = count_cost(tmp, *cost);
+				best->i = *i;
+			}
+			(*i)++;
 		}
-		while(c->b_bot)
-		{	
-			op_rrb(s->b, s->len_b);
-			--c->b_bot;
-		}
-	}
-	op_pb(s->a, s->b, s->len_a, s->len_b);
 }
 
 void	complex_sort(t_stacks *stacks)
@@ -126,32 +116,11 @@ void	complex_sort(t_stacks *stacks)
 	{
 		i = 0;
 		init_best_node (&best);
-		while(i < *stacks->len_a)
-		{
-			tmp = strat_for_node(&cost, *stacks, i);
-			if (count_cost(tmp, cost) < best.cost)
-			{
-				best.cost = count_cost(tmp, cost);
-				best.i = i;
-			}
-			i++;
-		}
+		find_best_node (stacks, &best, &cost, &i);
 		tmp = strat_for_node(&cost, *stacks, best.i);
 		apply_move(stacks, &cost, &best, tmp);
 	}
-	tmp = find_max(stacks->b, *stacks->len_b);
-	if (tmp <= *stacks->len_b / 2)
-	{
-		while(tmp--)
-			op_rb(stacks->b, stacks->len_b);
-	}
-	else
-	{
-		tmp = *stacks->len_b - tmp;
-		while(tmp--)
-			op_rrb(stacks->b, stacks->len_b);
-	}
-	while (*stacks->len_b > 0)
-		op_pa(stacks->a, stacks->b, stacks->len_a, stacks->len_b);
+	max_on_top(stacks);
+	push_all_back(stacks);
 }
 
