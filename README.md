@@ -44,7 +44,7 @@ Here's a quick rundown of the moves you can use:
 
 1. Clone this repository:
     ```sh
-    [git clone https://github.com/607mark/push_swap](https://github.com/607mark/push_swap)
+    git clone https://github.com/607mark/push_swap
     ```
 2. Go into the project directory:
     ```sh
