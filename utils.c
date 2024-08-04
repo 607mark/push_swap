@@ -6,7 +6,7 @@
 /*   By: mshabano <mshabano@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 04:08:30 by mshabano          #+#    #+#             */
-/*   Updated: 2024/08/04 16:01:24 by mshabano         ###   ########.fr       */
+/*   Updated: 2024/08/04 18:27:47 by mshabano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -88,7 +88,7 @@ int	ps_atoi(const char *str, int *n)
 	while (*str != '\0' && *str >= '0' && *str <= '9')
 	{
 		r = r * 10 + (*(str++) - '0');
-		if ((s == -1 && r * s < INT_MIN) || s == 1 && r > INT_MAX)
+		if ((s == -1 && r * s < INT_MIN) || (s == 1 && r > INT_MAX))
 			return (0);
 	}
 	*n = (int)(r * s);

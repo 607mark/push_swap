@@ -6,7 +6,7 @@
 /*   By: mshabano <mshabano@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 15:39:28 by mshabano          #+#    #+#             */
-/*   Updated: 2024/08/04 15:41:25 by mshabano         ###   ########.fr       */
+/*   Updated: 2024/08/04 18:34:42 by mshabano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@ void	max_on_top(t_stacks *stacks)
 	}
 }
 
-void	apply_move(t_stacks *s, t_pair_cost *c, t_best *b, int n)
+void	apply_move(t_stacks *s, t_pair_cost *c, int n)
 {
 	if (n == 1)
-		strat_1(s, c, b);
+		strat_1(s, c);
 	else if (n == 2)
-		strat_2(s, c, b);
+		strat_2(s, c);
 	else if (n == 3)
-		strat_3(s, c, b);
+		strat_3(s, c);
 	else if (n == 4)
-		strat_4(s, c, b);
+		strat_4(s, c);
 	else if (n == 5)
-		strat_5(s, c, b);
+		strat_5(s, c);
 	else if (n == 6)
 	{
 		while (c->b_bot && c->a_bot)

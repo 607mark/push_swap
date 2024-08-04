@@ -6,7 +6,7 @@
 /*   By: mshabano <mshabano@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 16:09:52 by mshabano          #+#    #+#             */
-/*   Updated: 2024/08/04 16:20:09 by mshabano         ###   ########.fr       */
+/*   Updated: 2024/08/04 18:36:57 by mshabano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,17 @@ void	sort_3(int *s, int *len);
 void	complex_sort(t_stacks *stacks);
 void	push_all_back(t_stacks *stacks);
 void	max_on_top(t_stacks *stacks);
-
+void	easy_sort(t_stacks s);
 //sorting utils
 int		is_sorted(int *stack, int len);
 int		target_b(t_stacks s, int n);
 int		find_max(int *s, int len);
 void	init_best(t_best *best);
-void	apply_move(t_stacks *s, t_pair_cost *c, t_best *b, int n);
+void	apply_move(t_stacks *s, t_pair_cost *c, int n);
 //strategies
-void	strat_1(t_stacks *s, t_pair_cost *c, t_best *b);
-void	strat_2(t_stacks *s, t_pair_cost *c, t_best *b);
-void	strat_3(t_stacks *s, t_pair_cost *c, t_best *b);
-void	strat_4(t_stacks *s, t_pair_cost *c, t_best *b);
-void	strat_5(t_stacks *s, t_pair_cost *c, t_best *b);
+void	strat_1(t_stacks *s, t_pair_cost *c);
+void	strat_2(t_stacks *s, t_pair_cost *c);
+void	strat_3(t_stacks *s, t_pair_cost *c);
+void	strat_4(t_stacks *s, t_pair_cost *c);
+void	strat_5(t_stacks *s, t_pair_cost *c);
 #endif

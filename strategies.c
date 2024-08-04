@@ -6,13 +6,13 @@
 /*   By: mshabano <mshabano@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 04:08:25 by mshabano          #+#    #+#             */
-/*   Updated: 2024/08/04 15:53:54 by mshabano         ###   ########.fr       */
+/*   Updated: 2024/08/04 18:29:53 by mshabano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	strat_1(t_stacks *s, t_pair_cost *c, t_best *b)
+void	strat_1(t_stacks *s, t_pair_cost *c)
 {
 	while (c->a_top)
 	{
@@ -26,7 +26,7 @@ void	strat_1(t_stacks *s, t_pair_cost *c, t_best *b)
 	}
 }
 
-void	strat_2(t_stacks *s, t_pair_cost *c, t_best *b)
+void	strat_2(t_stacks *s, t_pair_cost *c)
 {
 	while (c->b_top)
 	{
@@ -40,7 +40,7 @@ void	strat_2(t_stacks *s, t_pair_cost *c, t_best *b)
 	}
 }
 
-void	strat_3(t_stacks *s, t_pair_cost *c, t_best *b)
+void	strat_3(t_stacks *s, t_pair_cost *c)
 {
 	while (c->b_top && c->a_top)
 	{
@@ -55,7 +55,7 @@ void	strat_3(t_stacks *s, t_pair_cost *c, t_best *b)
 	}
 }
 
-void	strat_4(t_stacks *s, t_pair_cost *c, t_best *b)
+void	strat_4(t_stacks *s, t_pair_cost *c)
 {
 	while (c->b_top && c->a_top)
 	{
@@ -70,7 +70,7 @@ void	strat_4(t_stacks *s, t_pair_cost *c, t_best *b)
 	}
 }
 
-void	strat_5(t_stacks *s, t_pair_cost *c, t_best *b)
+void	strat_5(t_stacks *s, t_pair_cost *c)
 {
 	while (c->b_bot && c->a_bot)
 	{

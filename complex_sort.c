@@ -6,13 +6,13 @@
 /*   By: mshabano <mshabano@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 15:25:02 by mshabano          #+#    #+#             */
-/*   Updated: 2024/08/04 15:37:49 by mshabano         ###   ########.fr       */
+/*   Updated: 2024/08/04 18:34:56 by mshabano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	strategy(t_stacks stacks, t_pair_cost cost, int i, char hard)
+static int	strategy(t_pair_cost cost, char hard)
 {
 	if (hard == 'b')
 	{
@@ -52,6 +52,7 @@ int	count_cost(int strat, t_pair_cost cost)
 		return (cost.a_bot);
 	else if (strat == 6)
 		return (cost.b_bot);
+	return (0);
 }
 
 int	strat_for_node(t_pair_cost *cost, t_stacks stacks, int i)
@@ -78,7 +79,7 @@ int	strat_for_node(t_pair_cost *cost, t_stacks stacks, int i)
 		hard = 'a';
 	else
 		hard = 'b';
-	return (strategy(stacks, *cost, i, hard));
+	return (strategy(*cost, hard));
 }
 
 void	find_best(t_stacks *stacks, t_best *best, t_pair_cost *cost, int *i)
@@ -114,7 +115,7 @@ void	complex_sort(t_stacks *stacks)
 		init_best (&best);
 		find_best(stacks, &best, &cost, &i);
 		tmp = strat_for_node(&cost, *stacks, best.i);
-		apply_move(stacks, &cost, &best, tmp);
+		apply_move(stacks, &cost, tmp);
 	}
 	max_on_top(stacks);
 	push_all_back(stacks);
