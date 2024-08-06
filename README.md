@@ -4,7 +4,7 @@ This repository contains my implementation of a fun and challenging sorting algo
 
 ## What's This About?
 
-In this project, you'll find a program that sorts integers using two stacks (stack A and stack B) and a set of 11 predefined operations. The challenge is to figure out how to sort the numbers with as few moves as possible.
+In this repo, you'll find a C program that sorts integers using two stacks (stack A and stack B) and a set of 11 predefined operations. The challenge is to figure out how to sort the numbers with as few moves as possible.
 
 ## Results
 
