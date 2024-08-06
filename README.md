@@ -72,4 +72,4 @@ or (whatever)
 ```
 ### test.sh
 
-The `test.sh` script checks if your push_swap program processes the input correctly. To ensure it runs properly, you need to disable the instruction output.
+The `test.sh` script checks if your own push_swap processes the input correctly. To ensure it runs properly, you need to disable the instruction output.
